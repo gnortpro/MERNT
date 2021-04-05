@@ -77,7 +77,6 @@ module.exports = {
             post.likes = post.likes.filter(
               (like) => like.username !== username
             );
-            await post.save();
           } else {
             post.likes.push({
               username,
