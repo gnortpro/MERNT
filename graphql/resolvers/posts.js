@@ -47,6 +47,10 @@ module.exports = {
 
       const post = await newPost.save();
 
+      context.pubsub.publish("NEW_POST", {
+        newPost: post,
+      });
+
       return post;
     },
 
@@ -85,11 +89,26 @@ module.exports = {
           }
 
           await post.save();
+
+          context.pubsub.publish("LIKE_POST", {
+            likePost: post,
+          });
+
           return post;
         } else throw new UserInputError("Post not found");
       } catch (err) {
         throw new Error(err);
       }
+    },
+  },
+
+  Subscription: {
+    newPost: {
+      subscribe: (_, __, { pubsub }) => pubsub.asyncIterator("NEW_POST"),
+    },
+
+    likePost: {
+      subscribe: (_, __, { pubsub }) => pubsub.asyncIterator("LIKE_POST"),
     },
   },
 };

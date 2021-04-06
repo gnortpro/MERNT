@@ -52,4 +52,9 @@ module.exports = gql`
     getPosts: [Post]
     getPost(postId: ID!): Post
   }
+
+  type Subscription {
+    newPost: Post!
+    likePost: Post!
+  }
 `;
