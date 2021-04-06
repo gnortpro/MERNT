@@ -1,5 +1,5 @@
-const Post = require("../../models/Post");
 const { UserInputError, AuthenticationError } = require("apollo-server");
+const Post = require("../../models/Post");
 
 const checkAuth = require("../../utils/checkAuth");
 
@@ -25,6 +25,11 @@ module.exports = {
         });
 
         await post.save();
+
+        context.pubsub.publish("COMMENT_POST", {
+          commentPost: post,
+        });
+
         return post;
       } else {
         throw new UserInputError("Post not found");
@@ -43,7 +48,13 @@ module.exports = {
 
         if (post.comments[commentIndex].username === username) {
           post.comments.splice(commentIndex, 1);
+
           await post.save();
+
+          context.pubsub.publish("COMMENT_POST", {
+            commentPost: post,
+          });
+
           return post;
         } else {
           throw new AuthenticationError("Action not allowed");
@@ -51,6 +62,12 @@ module.exports = {
       } else {
         throw new UserInputError("Post not found");
       }
+    },
+  },
+
+  Subscription: {
+    commentPost: {
+      subscribe: (_, __, { pubsub }) => pubsub.asyncIterator("COMMENT_POST"),
     },
   },
 };

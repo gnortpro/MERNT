@@ -1,0 +1,21 @@
+{
+  "presets": [
+    [
+      "next/babel",
+      {
+        "styled-jsx": {
+          "plugins": [
+            "styled-jsx-plugin-sass"
+          ]
+        }
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "babel-plugin-transform-dynamic-import"
+      ]
+    }
+  }
+}
