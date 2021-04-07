@@ -36,7 +36,6 @@ export const PostsPage = ({ posts }) => {
 
                 <style jsx>{`
                     .postsList {
-                        background: black;
                     }
                 `}</style>
             </div>
