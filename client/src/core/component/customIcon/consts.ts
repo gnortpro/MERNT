@@ -17,6 +17,7 @@ export type ModeType = 'outline' | 'fill' | 'logo';
 export type IconType =
     // Outline Icons
     | 'home'
+    | 'message'
     | 'play_video'
     | 'add_photo'
     | 'alert_triangle'

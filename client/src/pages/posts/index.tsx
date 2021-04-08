@@ -29,15 +29,9 @@ export const PostsPage = ({ posts }) => {
             <div className="postsList">
                 {posts?.map(post => (
                     <div key={post?.id}>
-                        <h3>{post?.name}</h3>
                         <p>{post?.body}</p>
                     </div>
                 ))}
-
-                <style jsx>{`
-                    .postsList {
-                    }
-                `}</style>
             </div>
         </Layout>
     );
