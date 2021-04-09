@@ -114,9 +114,14 @@ const shadow = {
     revert: `0px -2px 4px ${color.inkTrans[200]}`,
 };
 
+const borderRadius = {
+    18: '18px',
+};
+
 const theme = {
     typo,
     color,
+    borderRadius,
     shadow,
     animSpeed,
 };

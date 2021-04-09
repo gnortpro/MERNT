@@ -45,7 +45,7 @@
         "core/model/index"
       ],
       "consts": [
-        "core/consts/index"
+        "core/constants/index"
       ],
       "theme": [
         "core/theme/index"

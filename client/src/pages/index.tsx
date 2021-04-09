@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Layout from '../components/Layout';
+import Layout from 'core/layout';
 
 const IndexPage: React.FC = () => (
     <Layout title="Home | Next.js + TypeScript Example">

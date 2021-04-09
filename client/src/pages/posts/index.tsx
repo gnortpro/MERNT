@@ -1,8 +1,8 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 
-import Layout from 'components/Layout';
 import { getApolloClient } from 'core/apolloClient';
+import Layout from 'core/layout';
 
 const GET_POSTS = gql`
     {
